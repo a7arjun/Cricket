@@ -1,0 +1,7 @@
+work/
+__pycache__/
+*.pyc
+.env
+*.token
+client_secret*.json
+credentials*.json

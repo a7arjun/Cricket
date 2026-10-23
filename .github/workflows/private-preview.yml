@@ -1,0 +1,62 @@
+name: Cricket private preview
+on:
+  workflow_dispatch:
+    inputs:
+      spreadsheet_id:
+        description: Cricket queue Google Sheet ID
+        required: true
+        type: string
+      episode_id:
+        description: Episode ID
+        default: CK001
+        required: true
+        type: string
+      upload_private:
+        description: Upload to the verified cricket channel as PRIVATE
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: cricket-queue-delivery
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CRICKET_DRIVE_CLIENT_ID: ${{ secrets.CRICKET_DRIVE_CLIENT_ID }}
+      CRICKET_DRIVE_CLIENT_SECRET: ${{ secrets.CRICKET_DRIVE_CLIENT_SECRET }}
+      CRICKET_DRIVE_REFRESH_TOKEN: ${{ secrets.CRICKET_DRIVE_REFRESH_TOKEN }}
+      CRICKET_YOUTUBE_CLIENT_ID: ${{ secrets.CRICKET_YOUTUBE_CLIENT_ID }}
+      CRICKET_YOUTUBE_CLIENT_SECRET: ${{ secrets.CRICKET_YOUTUBE_CLIENT_SECRET }}
+      CRICKET_YOUTUBE_REFRESH_TOKEN: ${{ secrets.CRICKET_YOUTUBE_REFRESH_TOKEN }}
+      CRICKET_YOUTUBE_CHANNEL_ID: ${{ vars.CRICKET_YOUTUBE_CHANNEL_ID }}
+      QUEUE_ID: ${{ inputs.spreadsheet_id }}
+      EPISODE_ID: ${{ inputs.episode_id }}
+      UPLOAD_PRIVATE: ${{ inputs.upload_private }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install renderer dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install -r requirements.txt
+      - name: Read queue and render
+        shell: bash
+        run: |
+          args=(--sheet-id "$QUEUE_ID" --episode-id "$EPISODE_ID")
+          if [ "$UPLOAD_PRIVATE" = "true" ]; then args+=(--upload-private); fi
+          python studio/run.py "${args[@]}"
+      - name: Save private review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cricket-private-review
+          path: |
+            work/**/output/*.mp4
+            work/**/upload_receipt.json
+          retention-days: 7

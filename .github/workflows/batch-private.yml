@@ -1,0 +1,53 @@
+name: Cricket batch delivery
+on:
+  workflow_dispatch:
+  schedule:
+    # 10:00 and 22:00 India time. Jobs may start later on GitHub.
+    - cron: '30 4,16 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: cricket-queue-delivery
+  cancel-in-progress: false
+jobs:
+  batch:
+    if: vars.CRICKET_BATCH_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      CRICKET_PUBLIC_ENABLED: ${{ vars.CRICKET_PUBLIC_ENABLED }}
+      CRICKET_QUEUE_ID: ${{ vars.CRICKET_QUEUE_ID }}
+      CRICKET_DRIVE_CLIENT_ID: ${{ secrets.CRICKET_DRIVE_CLIENT_ID }}
+      CRICKET_DRIVE_CLIENT_SECRET: ${{ secrets.CRICKET_DRIVE_CLIENT_SECRET }}
+      CRICKET_DRIVE_REFRESH_TOKEN: ${{ secrets.CRICKET_DRIVE_REFRESH_TOKEN }}
+      CRICKET_YOUTUBE_CLIENT_ID: ${{ secrets.CRICKET_YOUTUBE_CLIENT_ID }}
+      CRICKET_YOUTUBE_CLIENT_SECRET: ${{ secrets.CRICKET_YOUTUBE_CLIENT_SECRET }}
+      CRICKET_YOUTUBE_REFRESH_TOKEN: ${{ secrets.CRICKET_YOUTUBE_REFRESH_TOKEN }}
+      CRICKET_YOUTUBE_CHANNEL_ID: ${{ vars.CRICKET_YOUTUBE_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install -r requirements.txt
+      - name: Deliver due episodes
+        shell: bash
+        run: |
+          if [ "$CRICKET_PUBLIC_ENABLED" = "true" ]; then
+            python studio/batch.py --execute-public
+          else
+            python studio/batch.py --execute-private
+          fi
+      - name: Preserve review files and receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cricket-batch-review
+          path: |
+            work/**/output/*.mp4
+            work/**/upload_receipt.json
+          retention-days: 7

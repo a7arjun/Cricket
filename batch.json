@@ -1,0 +1,152 @@
+{
+  "timezone": "Asia/Kolkata",
+  "state": "PREVIEWS_READY_OAUTH_AND_VERIFICATION_PENDING",
+  "slots_local": [
+    "10:00",
+    "22:00"
+  ],
+  "episodes": [],
+  "planned_episodes": [
+    {
+      "episode_id": "CK002",
+      "batter": "Rohit Sharma",
+      "bowler": "Pat Cummins",
+      "day": 1,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK003",
+      "batter": "Sachin Tendulkar",
+      "bowler": "Mitchell Starc",
+      "day": 1,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK004",
+      "batter": "David Warner",
+      "bowler": "Brett Lee",
+      "day": 2,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK005",
+      "batter": "Sourav Ganguly",
+      "bowler": "Jasprit Bumrah",
+      "day": 2,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK006",
+      "batter": "Rohit Sharma",
+      "bowler": "Muttiah Muralitharan",
+      "day": 3,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK007",
+      "batter": "Abhishek Sharma",
+      "bowler": "Kagiso Rabada",
+      "day": 3,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK008",
+      "batter": "Sachin Tendulkar",
+      "bowler": "Brett Lee",
+      "day": 4,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK009",
+      "batter": "Virat Kohli",
+      "bowler": "Mitchell Starc",
+      "day": 4,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK010",
+      "batter": "Rohit Sharma",
+      "bowler": "Dale Steyn",
+      "day": 5,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK011",
+      "batter": "Virat Kohli",
+      "bowler": "Dale Steyn",
+      "day": 5,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK012",
+      "batter": "Rohit Sharma",
+      "bowler": "Mitchell Starc",
+      "day": 6,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK013",
+      "batter": "Sachin Tendulkar",
+      "bowler": "Dale Steyn",
+      "day": 6,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK014",
+      "batter": "David Warner",
+      "bowler": "Jasprit Bumrah",
+      "day": 7,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK015",
+      "batter": "Sourav Ganguly",
+      "bowler": "Brett Lee",
+      "day": 7,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK016",
+      "batter": "Abhishek Sharma",
+      "bowler": "Pat Cummins",
+      "day": 8,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK017",
+      "batter": "Virat Kohli",
+      "bowler": "Kagiso Rabada",
+      "day": 8,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK018",
+      "batter": "Rohit Sharma",
+      "bowler": "Brett Lee",
+      "day": 9,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK019",
+      "batter": "Sachin Tendulkar",
+      "bowler": "Muttiah Muralitharan",
+      "day": 9,
+      "slot_local": "22:00"
+    },
+    {
+      "episode_id": "CK020",
+      "batter": "David Warner",
+      "bowler": "Dale Steyn",
+      "day": 10,
+      "slot_local": "10:00"
+    },
+    {
+      "episode_id": "CK021",
+      "batter": "Sourav Ganguly",
+      "bowler": "Mitchell Starc",
+      "day": 10,
+      "slot_local": "22:00"
+    }
+  ],
+  "youtube_channel_id": "UC41D3FpQrTMWb9o7qKanWug"
+}

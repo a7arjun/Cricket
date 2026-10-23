@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "episode_id": "CK001",
+  "title": "Kohli vs Bumrah: 12 Off 6! Power Ya Placement? | What If",
+  "description": "Fictional, editorially scripted cricket challenge: Kohli needs 12 from six against Bumrah. AI-generated portraits/action illustrations and synthetic Hinglish narration. Historical data cards use Cricsheet IPL snapshot downloaded 23 October 2026: 159 batter runs, 108 balls faced, 5 bowler-credited dismissals. Delivery types, running, field placement and this winning story are illustrative, not actual match footage or a statistical prediction. Data: https://cricsheet.org/ (ODC-BY 1.0).",
+  "privacy": "private",
+  "story_mode": "scripted_what_if",
+  "target": 12,
+  "results": [
+    0,
+    4,
+    2,
+    4,
+    0,
+    2
+  ],
+  "bundle_drive_id": "REPLACE_WITH_DRIVE_FILE_ID",
+  "bundle_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "expected_cricket_channel_id": null,
+  "kohli_story_policy": "Script a Kohli win when he is the featured batter; disclose fictional story mode; never alter historical stats.",
+  "other_players_policy": "Use ordinary outcome modelling unless a scripted story is selected."
+}
